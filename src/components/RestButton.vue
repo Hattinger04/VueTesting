@@ -12,6 +12,13 @@ export default {
   data() {
     return {
       get: null,
+      html_methods: {
+        GET: "GET",
+        POST: "POST",
+        PATCH: "PATCH",
+        PUT: "PUT",
+        DELETE: "DELETE",
+      },
     };
   },
   props: {
@@ -23,12 +30,20 @@ export default {
       type: String,
       default: "",
     },
+    method: {
+      type: String,
+      default: "",
+    },
   },
   methods: {
-      // TestURL: https://gorest.co.in/public/v2/users
+    // TestURL: https://gorest.co.in/public/v2/users
     async clickevent() {
       await fetch(this.link, {
-        method: "GET",
+        method: this.method,
+        body:
+          this.method == this.html_methods.GET
+            ? null
+            : JSON.stringify(this.data),
       })
         .then((response) => response.json())
         .then((data) => (this.get = data));
