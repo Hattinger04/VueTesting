@@ -1,11 +1,5 @@
-<template>
-    <button @click="clickevent()" class="btn" v-text="name"></button>
-</template>
-
 <script>
-
 export default {
-    name: "RestButton", 
     
     props: {
         name : {
@@ -20,20 +14,16 @@ export default {
             type: String, 
             default: ""
         },
-        method : {
-            type: String, 
-            default: "GET"
-        }
-    }, 
+    },
     methods: {
         async clickevent() {
             await fetch(this.link, {
-                method: this.method, 
+                method: "POST", 
                 body: JSON.stringify(this.data)
             })
             .then(response => response.json())
-            .then(data => alert(data))
-        }
-    }
+            .then(data => alert("Data: "+ data))
+        }  
+    }  
 }
 </script>
