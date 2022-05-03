@@ -1,26 +1,38 @@
 <template>
-    <button class="btn"></button>
+    <button @click="clickevent()" class="btn" v-text="name"></button>
 </template>
 
 <script>
-// Wird so wohl nicht funktionieren!
+
 export default {
     name: "RestButton", 
-    data() {
-        return 
-    }, 
-    methods: {
-
-    }, 
+    
     props: {
         name : {
-
+            type: String, 
+            default: "Rest Button"
         },
         link : {
-
+            type: String, 
+            default: ""
         }, 
         data : {
-
+            type: String, 
+            default: ""
+        },
+        method : {
+            type: String, 
+            default: "GET"
+        }
+    }, 
+    methods: {
+        async clickevent() {
+            await fetch(this.link, {
+                method: this.method, 
+                body: JSON.stringify(this.data)
+            })
+            .then(response => response.json())
+            .then(data => alert(data))
         }
     }
 }

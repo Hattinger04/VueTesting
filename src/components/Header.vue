@@ -2,17 +2,21 @@
     <div class="container">
         <h1>{{ msg }}</h1>
         <Button/>
+        <RestButton v-bind:name="name" v-bind:method="method" v-bind:link="link"/>
     </div>
 </template>
 
 
 <script>
 import Button from './Button.vue'
+import RestButton from "./RestButton.vue"
     export default {
         name: 'Header',
         data() {
             return {
-                hello : 'Hallo'
+                name: "Hallo",
+                method: "GET", 
+                link: "localhost:8080/user"
             }
         },
         props: {
@@ -22,7 +26,7 @@ import Button from './Button.vue'
             }
         },
         components : {
-            Button
+            Button, RestButton
         }
     }
 </script>
