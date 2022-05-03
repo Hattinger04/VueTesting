@@ -20,7 +20,7 @@ import Button from './Button.vue'
                 type: String,
                 default : 'Hallo Welt'
             }
-        }, 
+        },
         components : {
             Button
         }

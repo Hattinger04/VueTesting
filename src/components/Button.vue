@@ -20,7 +20,6 @@ export default {
     methods : {
         clickevent() {
             this.show = !this.show
-            
         }
     }
 }
