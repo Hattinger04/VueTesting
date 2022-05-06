@@ -13,25 +13,14 @@ export default {
   data() {
     return {
       get: null,
-      html_methods: {
-        GET: "GET",
-        POST: "POST",
-        PATCH: "PATCH",
-        PUT: "PUT",
-        DELETE: "DELETE",
-      },
     };
   },
   props: {
     name: {
       type: String,
-      default: "Rest Get Button",
+      default: "Login Button",
     },
     link: {
-      type: String,
-      default: "",
-    },
-    method: {
       type: String,
       default: "",
     },
@@ -49,11 +38,8 @@ export default {
       });
       await fetch(this.link, {
         mode: "cors", 
-        method: this.method,
-        body:
-          this.method == this.html_methods.GET
-            ? null
-            : JSON.stringify(formData),
+        method: "POST",
+        body: formData
       })
         .then((response) => response.json())
         .then((json) => (this.get = json));
