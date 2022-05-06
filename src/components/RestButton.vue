@@ -34,11 +34,16 @@ export default {
       type: String,
       default: "",
     },
+    data: {
+      type: Array, 
+      default: {},
+    }
   },
   methods: {
     // TestURL: https://gorest.co.in/public/v2/users
     async clickevent() {
       await fetch(this.link, {
+        mode: "cors", 
         method: this.method,
         body:
           this.method == this.html_methods.GET
