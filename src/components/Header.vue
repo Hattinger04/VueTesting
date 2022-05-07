@@ -4,6 +4,7 @@
     <RestButton name="Get All users" link="http://localhost:8081/user/getAllUsers" method="GET"/>
     <RestButton name="Create new user" link="http://127.0.0.1:8081/user/createUser" method="POST" :data=sendData />
     <LoginButton link="http://localhost:8081/user/login" :data=sendLogin />
+    <RestButton name="Run Default Hamster" link="http://127.0.0.1:8081/hamster/defaultTerrain" method="POST" :data=sendDefaultHamster />
   </div>
 </template>
 
@@ -26,7 +27,11 @@ export default {
       }, 
       sendLogin: {
         "username": "Admin", 
-        "password": "Admin"
+        "password": "Admin",
+      },
+      sendDefaultHamster: {
+        "programName": "vuetest",
+        "program": "linksUm();",
       }
     };
   },

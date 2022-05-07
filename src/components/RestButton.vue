@@ -6,7 +6,6 @@
 </template>
 
 <script>
-
 export default {
   name: "RestButton",
 
@@ -36,24 +35,25 @@ export default {
       default: "",
     },
     data: {
-      type: Array, 
+      type: Array,
       default: {},
-    }
+    },
   },
   methods: {
     // TestURL: https://gorest.co.in/public/v2/users
     async clickevent() {
-      let formData = new FormData();
+      var data = new URLSearchParams();
       Object.entries(this.data).forEach(([key, value]) => {
-        formData.append(key, value);
+        data.append(key, value);
       });
+      console.log(data.toString());
       await fetch(this.link, {
-        mode: "cors", 
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        mode: "cors",
         method: this.method,
-        body:
-          this.method == this.html_methods.GET
-            ? null
-            : JSON.stringify(formData),
+        body: this.method == this.html_methods.GET ? null : JSON.stringify(data),
       })
         .then((response) => response.json())
         .then((json) => (this.get = json));

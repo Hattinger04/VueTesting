@@ -6,7 +6,7 @@
 </template>
 
 <script>
-
+import axios from "axios";
 export default {
   name: "RestButton",
 
@@ -25,24 +25,27 @@ export default {
       default: "",
     },
     data: {
-      type: Array, 
+      type: Array,
       default: {},
-    }
+    },
   },
   methods: {
     // TestURL: https://gorest.co.in/public/v2/users
-    async clickevent() {
-      let formData = new FormData();
-      Object.entries(this.data).forEach(([key, value]) => {
-        formData.append(key, value);
-      });
-      await fetch(this.link, {
-        mode: "cors", 
-        method: "POST",
-        body: formData
-      })
-        .then((response) => response.json())
-        .then((json) => (this.get = json));
+    clickevent() {
+      axios.post(
+          this.link,
+          new URLSearchParams({
+            username: "Admin",
+            password: "Admin",
+          }),
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => (this.get = response));
     },
   },
 };
