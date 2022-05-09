@@ -35,25 +35,18 @@ export default {
       default: "",
     },
     data: {
-      type: Array,
+      type: Object,
       default: {},
     },
   },
   methods: {
     // TestURL: https://gorest.co.in/public/v2/users
     async clickevent() {
-      var data = new URLSearchParams();
-      Object.entries(this.data).forEach(([key, value]) => {
-        data.append(key, value);
-      });
-      console.log(data.toString());
+      console.log(JSON.stringify(this.data));
       await fetch(this.link, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-        },
         mode: "cors",
         method: this.method,
-        body: this.method == this.html_methods.GET ? null : JSON.stringify(data),
+        body: this.method == this.html_methods.GET ? null : JSON.stringify(this.data),
       })
         .then((response) => response.json())
         .then((json) => (this.get = json));

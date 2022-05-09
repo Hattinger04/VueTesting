@@ -25,27 +25,41 @@ export default {
       default: "",
     },
     data: {
-      type: Array,
+      type: Object,
       default: {},
     },
   },
   methods: {
     // TestURL: https://gorest.co.in/public/v2/users
-    clickevent() {
-      axios.post(
+    clickevent2() {
+      var querystring = require("querystring");
+      axios
+        .post(
           this.link,
-          new URLSearchParams({
+          querystring.stringify({
             username: "Admin",
             password: "Admin",
           }),
           {
             headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
+              "Content-Type": "application/x-www-form-urlencoded",
             },
           }
         )
-        .then((response) => (this.get = response));
+        .then((response) => (this.get = JSON.parse(response)));
+    },
+    async clickevent() {
+      let formData = new FormData();
+      formData.append("username", "Admin");
+      formData.append("password", "Admin");
+      await fetch(this.link, {
+        method: "POST",
+        body: formData,
+      })
+        .then(function (response) {
+          return response.body;
+        })
+        .then(blob => this.get = URL.createObjectURL(blob));
     },
   },
 };
