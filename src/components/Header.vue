@@ -3,7 +3,7 @@
     <h1>Rest - Example - Buttons</h1>
     <RestButton name="Get All users" link="https://localhost:8443/user/getAllUsers" method="GET"/>
     <RestButton name="Create new user" link="https://localhost:8443/user/createUser" method="POST" :data=sendData />
-    <LoginButton link="https://localhost:8443 /user/login" :data=sendLogin />
+    <LoginButton link="https://localhost:8443/login" :data=sendLogin />
     <RestButton name="Run Default Hamster" link="https://localhost:8443/hamster/defaultTerrain" method="POST" :data=sendDefaultHamster />
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
       },
       sendDefaultHamster: {
         "programName": "vuetest",
-        "program": "linksUm();",
+        "program": "void main() { linksUm();}",
       }
     };
   },

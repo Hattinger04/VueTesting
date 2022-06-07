@@ -45,18 +45,21 @@ export default {
     async clickevent() {
       axios.defaults.withCredentials = true;
       var config = {
-        method: "get",
+        method: this.method,
         url: this.link,
         headers: {
           "Access-Control-Allow-Credentials": true,
         },
+        data: this.data,
       };
 
       axios(config)
-        .then((response) => response.json())
-        .then((json) => (this.get = json))
+        .then(function (response) {
+          return JSON.stringify(response.data);
+        })
+        .then(json => this.get = json)
         .catch(function (error) {
-          console.log(error);
+           this.get = JSON.stringify(error.data);
         });
     },
   },

@@ -34,25 +34,24 @@ export default {
     async clickevent() {
       axios.defaults.withCredentials=true; 
       var data = JSON.stringify({
-        username: "Admin",
-        password: "Admin",
+        username: "Hattinger04",
+        password: "Hattinger04",
       });
-
       var config = {
         method: "post",
-        url: "https://localhost:8443/login",
+        url: this.link,
         headers: {
           "Access-Control-Allow-Origin" : "*",
           "Content-Type": "application/json",
           "Accept": "*/*", 
-          "Conntection": "keep-alive",
         },
         withCredentials: true, 
         data: data,
       };
 
       axios(config)
-        .then((response) => console.log(response.headers["set-cookie"]))
+        .then((response) => this.get = "logged in")
+        .catch(error => this.get = "not logged in")
     },
   },
 };
