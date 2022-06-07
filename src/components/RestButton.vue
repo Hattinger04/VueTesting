@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "RestButton",
 
@@ -42,14 +43,21 @@ export default {
   methods: {
     // TestURL: https://gorest.co.in/public/v2/users
     async clickevent() {
-      console.log(JSON.stringify(this.data));
-      await fetch(this.link, {
-        mode: "cors",
-        method: this.method,
-        body: this.method == this.html_methods.GET ? null : JSON.stringify(this.data),
-      })
+      axios.defaults.withCredentials = true;
+      var config = {
+        method: "get",
+        url: this.link,
+        headers: {
+          "Access-Control-Allow-Credentials": true,
+        },
+      };
+
+      axios(config)
         .then((response) => response.json())
-        .then((json) => (this.get = json));
+        .then((json) => (this.get = json))
+        .catch(function (error) {
+          console.log(error);
+        });
     },
   },
 };
