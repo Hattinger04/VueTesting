@@ -34,8 +34,8 @@ export default {
     async clickevent() {
       axios.defaults.withCredentials=true; 
       var data = JSON.stringify({
-        username: "Hattinger04",
-        password: "Hattinger04",
+        username: "Admin",
+        password: "Admin",
       });
       var config = {
         method: "post",
