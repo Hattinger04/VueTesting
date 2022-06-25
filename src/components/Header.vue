@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <h1>Rest - Example - Buttons</h1>
-    <RestButton name="Get All users" link="https://localhost/api/user/getAllUsers" method="GET"/>
-    <RestButton name="Create new user" link="https://localhost/api/user/createUser" method="POST" :data=sendData />
+    <RestButton name="Get All users" link="https://localhost/api/user/getAllUsers" method="get"/>
+    <RestButton name="Create new user" link="https://localhost/api/user/createUser" method="post" :data=sendData />
     <LoginButton link="https://localhost/api/login" :data=sendLogin />
-    <RestButton name="Run Default Hamster" link="https://localhost/api/hamster/defaultTerrain" method="POST" :data=sendDefaultHamster />
-    <RestButton name="Logout" link="https://localhost/api/user/logout" method="GET"/>
+    <RestButton name="Run Default Hamster" link="https://localhost/api/hamster/defaultTerrain" method="post" :data=sendDefaultHamster />
+    <RestButton name="Logout" link="https://localhost/api/user/logout" method="get"/>
   </div>
 </template>
 
@@ -27,8 +27,8 @@ export default {
         "active": "true", 
       }, 
       sendLogin: {
-        "username": "Admin", 
-        "password": "Admin",
+        "username": "admin", 
+        "password": "admin",
       },
       sendDefaultHamster: {
         "programName": "vuetest",

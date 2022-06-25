@@ -14,11 +14,11 @@ export default {
     return {
       get: null,
       html_methods: {
-        GET: "GET",
-        POST: "POST",
-        PATCH: "PATCH",
-        PUT: "PUT",
-        DELETE: "DELETE",
+        GET: "get",
+        POST: "post",
+        PATCH: "patch",
+        PUT: "put",
+        DELETE: "delete",
       },
     };
   },
@@ -50,7 +50,7 @@ export default {
         headers: {
           "Access-Control-Allow-Credentials": true,
         },
-        data: this.data,
+        data: this.method == this.html_methods.GET ? null : this.data,
       };
 
       axios(config)
@@ -59,7 +59,7 @@ export default {
         })
         .then(json => this.get = json)
         .catch(function (error) {
-           this.get = JSON.stringify(error.data);
+           console.log(JSON.stringify(error.data));
         });
     },
   },
