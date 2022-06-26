@@ -50,6 +50,7 @@ export default {
         headers: {
           "Access-Control-Allow-Credentials": true,
         },
+        withCredentials: true, 
         data: this.method == this.html_methods.GET ? null : this.data,
       };
 

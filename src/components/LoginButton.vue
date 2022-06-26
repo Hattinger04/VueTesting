@@ -50,8 +50,13 @@ export default {
       };
 
       axios(config)
-        .then((response) => this.get = "logged in")
-        .catch(error => this.get = "not logged in")
+        .then(function (response) {
+          return JSON.stringify(response.data);
+        })
+        .then(json => this.get = json)
+        .catch(function (error) {
+           console.log(JSON.stringify(error.data));
+        });
     },
   },
 };
