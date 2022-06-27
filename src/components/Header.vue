@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <h1>Rest - Example - Buttons</h1>
-     <!-- Of cource you have to change the ip from localhost to the server-ip address 
+     <!-- Of course you have to change the ip from localhost to the server-ip address 
      but you dont have to change smth in nginx - is tested! -->
-    <RestButton name="Get All users" link="https:/localhost/api/user/getAllUsers" method="get"/>
-    <RestButton name="Create new user" link="https:/localhost/api/user/createUser" method="post" :data=sendData />
+    <RestButton name="Get All users" link="https://localhost/api/user/getAllUsers" method="get"/>
+    <RestButton name="Create new user" link="https://localhost/api/user/createUser" method="post" :data=sendData />
     <LoginButton link="https://localhost/api/login" :data=sendLogin />
     <RestButton name="Run Default Hamster" link="https://localhost/api/hamster/defaultTerrain" method="post" :data=sendDefaultHamster />
     <RestButton name="Logout" link="https://localhost/api/user/logout" method="get"/>
